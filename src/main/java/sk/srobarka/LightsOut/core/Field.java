@@ -65,7 +65,22 @@ public class Field {
 
     public Light getLight (int row, int column)
     {
+        return this.lights[row][column];
+    }
 
+    public boolean isSolved ()
+    {
+        for ( var row=0; row<this.rowCount; row++)
+        {
+            for (var column=0; column<this.columnCount; column++)
+            {
+                if (getLight(row, column).isOn())
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     private void initField(){
